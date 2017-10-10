@@ -15,7 +15,7 @@ digitToWord n =
     7 -> "seven"
     8 -> "eight"
     9 -> "nine"
-    _ -> error $ (show n) ++ " is not a digit"
+    _ -> error (show n ++ " is not a digit")
 
 digits :: Int -> [Int]
 digits = reverse . go where
@@ -24,5 +24,8 @@ digits = reverse . go where
     next = if n2 > 0 then go n2 else []
 
 wordNumber :: Int -> String
-wordNumber = concat . intersperse "," . map digitToWord . digits
-
+wordNumber =    
+    concat
+  . intersperse "-"
+  . map digitToWord
+  . digits
